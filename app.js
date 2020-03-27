@@ -10,7 +10,9 @@ var flash = require("connect-flash");
 var User = require("./models/user");
 var Event = require("./models/event");
 
-mongoose.connect('mongodb://localhost:27017/eventsApp', {useNewUrlParser: true});
+var dbURL = process.env.DATABASEURL || 'mongodb://localhost:27017/eventsApp';
+mongoose.connect(dbURL, {useNewUrlParser: true});
+
 app.set("view engine","ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
