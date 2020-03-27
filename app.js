@@ -156,15 +156,15 @@ app.delete("/events/:id",eventOwnership,function(req,res){
 					break;
 				}
 			}
-		}
-	});
-	Event.findByIdAndRemove(req.params.id,function(err){
-		if(err) {
-			req.flash("error","Event not found!!");
-			res.redirect("/events");
-		} else {
-			req.flash("success","Event deleted!!");
-			res.redirect("/events");
+			Event.findByIdAndRemove(req.params.id,function(err){
+				if(err) {
+					req.flash("error","Event not found!!");
+					res.redirect("/events");
+				} else {
+					req.flash("success","Event deleted!!");
+					res.redirect("/events");
+				}
+			});
 		}
 	});
 });
