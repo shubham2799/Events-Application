@@ -1,0 +1,67 @@
+.landing-image { 
+   position: relative; 
+   width: 100%; 
+}
+
+.landing-text { 
+   position: absolute; 
+   top: 50%; 
+   margin-top: -100px; 
+   width: 100%;
+}
+
+.center-fit {
+	width: 100%;
+	height: 100vh;
+}
+
+.center {
+	width: 100%; 
+	margin: 25px auto;
+}
+
+.large-icon {
+	font-size: 4em;
+}
+
+.l1 {
+	font-weight: bolder;
+}
+
+.l2 {
+	color: red;
+	font-weight: bold;
+}
+
+.login-form {
+	max-width: 350px;
+}
+
+.event {
+	max-width: 700px;
+}
+
+.event-form {
+	max-width: 600px;
+}
+
+.opac {
+	opacity: 0.8;
+}
+
+.screen-center {
+	position: absolute; 
+	top: 50%; 
+	left: 50%;
+	margin-top: -10px;
+	margin-left: -50px;
+}
+
+textarea {
+	width: 100%; 
+	height: 100px;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-menu .dropdown-item:hover {
+  color: #007bff;
+}

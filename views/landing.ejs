@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Events App</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/styles.css">
+	<script src="https://kit.fontawesome.com/f0bb2fa622.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		<% if(success && success.length>0) { %>
+			<div class="alert alert-success mt-3">
+				<%= success %>
+			</div>
+		<% } %>
+		
+		<% if(error && error.length>0) { %>
+			<div class="alert alert-danger mt-3">
+				<%= error %>
+			</div>
+		<% } %>
+	</div>
+  
+	<div class="landing-image">
+	      <img src="https://userscontent2.emaze.com/images/9db434bf-efda-4bbd-9062-6492029d4634/df21461c73c276af12f478c3cce542ee.jpg" class="center-fit">
+
+	      <div class="text-center landing-text">
+	      	<h1 class="l1">Welcome to Events Application</h1>
+	      	<i class="fas fa-calendar-check large-icon"></i>
+	      	<h4 class="l2 my-3">Manage all your events at one place</h4>
+	      	<a href="/events" class="btn btn-success">Start here</a>
+	      </div>
+	</div>
+
+<%- include("./partials/footer") %>

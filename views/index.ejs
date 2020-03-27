@@ -1,0 +1,30 @@
+<%- include("./partials/header") %>
+
+<div class="container">
+	<div class="center event">
+		<% user.events.forEach(function(event){ %>
+			<div class="border my-4 p-3">
+				<h5><%= event.title %></h5>
+				<hr>
+				<div class="row">
+					<div class="col-md-7">
+						<div class="opac">Event created on <%= event.created.toDateString() %></div>
+					</div>
+					<div class="col-md-5">
+						<div class="float-right">
+							<a href="/events/<%= event._id %>" class="btn btn-sm btn-outline-primary">View Details<i class="fas fa-chevron-right ml-1"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% }); %>
+	</div>
+	<% if(user.events.length==0){ %>
+		<div class="screen-center text-center">
+			<h5>No events to display!!</h5>
+			<a href="/events/new" class="btn btn-success">Add Event</a>
+		</div>
+	<% } %>
+</div>
+
+<%- include("./partials/footer") %>

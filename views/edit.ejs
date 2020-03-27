@@ -1,0 +1,35 @@
+<%- include("./partials/header") %>
+
+<% var now = new Date(); %>
+<% var minDate = now.toISOString().substring(0,10); %>
+
+<div class="container">
+	<div class="center event-form">
+		<h2 class="text-center mb-3">Edit Event</h2>
+		<form action="/events/<%= event._id %>?_method=PUT" method="POST">
+			<div class="form-group">
+				<input type="text" name="event[title]" value="<%= event.title %>" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<input type="text" name="event[type]" value="<%= event.type %>" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<input type="text" name="event[venue]" value="<%= event.venue %>" class="form-control" required>
+			</div>
+			<div class="row mb-3">
+				<div class="col-6 pr-1">
+						<input type="date" name="event[date]" value="<%= event.date %>" min="<%= minDate %>" class="form-control" required>
+				</div>
+				<div class="col-6 pl-1">
+						<input type="time" name="event[time]" value="<%= event.time %>" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<textarea name="event[description]" placeholder="Description (optional)"><%= event.description %></textarea>
+			</div>
+			<button class="btn btn-primary btn-block">Edit Event</button>
+		</form>
+	</div>
+</div>
+
+<%- include("./partials/footer") %>

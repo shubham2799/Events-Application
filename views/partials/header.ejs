@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Events App</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/styles.css">
+	<script src="https://kit.fontawesome.com/f0bb2fa622.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <div class="container">
+	  	  <a class="navbar-brand" href="/">
+	  	  	<i class="fas fa-calendar-check mr-2"></i>
+		  	Events App
+		  </a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		        <a class="nav-link" href="/events">Home<span class="sr-only">(current)</span></a>
+		      </li>
+		    </ul>
+		    <ul class="navbar-nav navbar-right">
+		    	<% if(!currentUser) { %>
+		    		<li class="nav-item active">
+				        <a class="nav-link" href="/register">Sign Up <span class="sr-only">(current)</span></a>
+				    </li>
+			        <li class="nav-item active">
+			          <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+			        </li>
+		    	<% } else { %>
+		    		<li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+				          Welcome <%= currentUser.username %>
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				          <a class="dropdown-item" href="/events/new">New Event</a>
+				          <a class="dropdown-item" href="/events">My Events</a>
+				        </div>
+				     </li>
+				     <li class="nav-item active">
+				        <a class="nav-link" href="/logout">Logout<span class="sr-only">(current)</span></a>
+				    </li>
+			    <% } %>
+		    </ul>
+		  </div>
+	  </div>
+	</nav>
+
+	<div class="container">
+		<% if(success && success.length>0) { %>
+			<div class="alert alert-success mt-3">
+				<%= success %>
+			</div>
+		<% } %>
+		
+		<% if(error && error.length>0) { %>
+			<div class="alert alert-danger mt-3">
+				<%= error %>
+			</div>
+		<% } %>
+	</div>
