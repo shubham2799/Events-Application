@@ -98,7 +98,8 @@ app.post("/events",isLoggedIn,function(req,res){
 		} else {
 			req.user.events.push(event);
 			req.user.save();
-			res.redirect("/events");
+			req.flash("success","Event added!!");
+			res.redirect("/events/"+event._id);
 		}
 	});
 });
@@ -131,6 +132,7 @@ app.put("/events/:id",eventOwnership,function(req,res){
 			req.flash("error","Event not found!!");
 			res.redirect("/events");
 		} else {
+			req.flash("success","Event updated!!");
 			res.redirect("/events/"+req.params.id);
 		}
 	});
@@ -142,6 +144,7 @@ app.delete("/events/:id",eventOwnership,function(req,res){
 			req.flash("error","Event not found!!");
 			res.redirect("/events");
 		} else {
+			req.flash("success","Event deleted!!");
 			res.redirect("/events");
 		}
 	});
