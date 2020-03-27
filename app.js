@@ -81,7 +81,12 @@ app.get("/logout",isLoggedIn,function(req,res){
 
 app.get("/events",isLoggedIn,function(req,res){
 	User.findById(req.user._id).populate("events").exec(function(err,user){
-		res.render("index",{user: user});
+		if(err){
+			req.flash("error","Something went wrong!!");
+			res.redirect("/");
+		} else {
+			res.render("index",{user: user});
+		}
 	});
 });
 
@@ -139,6 +144,20 @@ app.put("/events/:id",eventOwnership,function(req,res){
 });
 
 app.delete("/events/:id",eventOwnership,function(req,res){
+	User.findById(req.user._id).populate("events").exec(function(err,user){
+		if(err){
+			req.flash("error","Something went wrong!!");
+			res.redirect("/events");
+		} else {
+			for (var i = user.events.length - 1; i >= 0; i--) {
+				if(user.events[i]._id.equals(req.params.id)){
+					user.events.splice(i,1);
+					user.save();
+					break;
+				}
+			}
+		}
+	});
 	Event.findByIdAndRemove(req.params.id,function(err){
 		if(err) {
 			req.flash("error","Event not found!!");
